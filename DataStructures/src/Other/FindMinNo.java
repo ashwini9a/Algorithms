@@ -1,0 +1,48 @@
+package Other;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class FindMinNo {
+	
+	public static void main(String args[]) throws Exception
+	{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("Enter String");
+        String snum = br.readLine();
+		long num = Long.parseLong(snum);
+		long min = num;
+		for(int i=0;i<snum.length()-1;i++)
+		{
+			 int n1 = Integer.parseInt(snum.charAt(i)+"");
+			 int n2 = Integer.parseInt(snum.charAt(i+1)+"");
+			 int sum = n1+n2;
+			 String temp="";
+			 if(i==0 && snum.length()>2)
+			 {
+				 System.out.println(snum.substring(i+2, snum.length()));
+				 temp=sum+""+snum.substring(i+2, snum.length());
+			 }
+			 else if(snum.length()<3)
+			 {
+				 temp=sum+"";
+			 }
+			 else if(i==snum.length()-2)
+			 {
+				 temp=snum.substring(0, i)+sum;
+			 }
+			 else
+			 {
+				 temp=snum.substring(0, i)+sum+snum.substring(i+2, snum.length());
+			 }
+			 long n = Long.parseLong(temp);
+			 if(min>n)
+			 {
+				 min=n;
+			 }
+		}
+		System.out.println("Min :"+min);
+		
+	}
+
+}

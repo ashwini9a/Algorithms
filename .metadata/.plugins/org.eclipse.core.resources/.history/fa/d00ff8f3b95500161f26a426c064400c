@@ -1,0 +1,30 @@
+package LinkedList;
+
+import dsDefinitions.MyLinkedListHead;
+
+public class CTCIQ1 {
+	
+	public static void main(String args[])
+	{
+		MyLinkedListHead head = new MyLinkedListHead();
+		head.insertAtEnd(1);
+		head.insertAtEnd(2);
+		head.insertAtEnd(3);
+		head.insertAtEnd(4);
+		head.insertAtEnd(5);
+		head.insertAtEnd(5);
+		head.insertAtEnd(6);
+		head.insertAtEnd(8);
+		head.insertAtEnd(99);
+		head.insertAtEnd(1);
+		
+		head.display();
+		
+		removeDuplicates(head);
+	}
+
+	public static void removeDuplicates(MyLinkedListHead head)
+	{
+		
+	}
+}

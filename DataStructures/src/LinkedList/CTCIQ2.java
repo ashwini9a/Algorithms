@@ -1,0 +1,55 @@
+package LinkedList;
+
+import java.util.Scanner;
+
+import dsDefinitions.LLNode;
+import dsDefinitions.MyLinkedListHead;
+
+public class CTCIQ2 {
+	public static void main(String args[])
+	{
+		MyLinkedListHead head = new MyLinkedListHead();
+		head.insertAtEnd(1);
+		head.insertAtEnd(2);
+		head.insertAtEnd(3);
+		head.insertAtEnd(4);
+		head.insertAtEnd(5);
+		head.insertAtEnd(5);
+		head.insertAtEnd(6);
+		head.insertAtEnd(8);
+		head.insertAtEnd(99);
+		head.insertAtEnd(1);
+		head.insertAtEnd(4);
+		Scanner sc = new Scanner(System.in);
+		int k = sc.nextInt();
+		head.display();
+		System.out.println();
+		displayKthLast(head,k);
+		head.display();
+		
+	}
+	public static void displayKthLast(MyLinkedListHead head,int k)
+	{
+		LLNode temp = head.getHead(),prev=head.getHead() ;
+		int count=0;
+		while(count<k && temp!=null)
+		{
+			count++;
+			prev=temp;
+			temp = temp.getNext();
+		}
+		if(temp==null)
+		{
+			System.out.println(prev.getData());
+		}
+		LLNode temp2 = head.getHead();
+		
+		while(temp!=null)
+		{
+			temp = temp.getNext();
+			temp2 = temp2.getNext();
+		}
+		System.out.println(temp2.getData());
+	}
+
+}

@@ -1,0 +1,106 @@
+package Other;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+
+public class FindLongImage {
+	public static void main(String args[])
+	{
+		int max=0;
+		 try {
+			 	String fileName = "test.txt";
+			 	ArrayList names = new ArrayList();
+	            FileReader fileReader =new FileReader(fileName);
+	            BufferedReader bufferedReader = new BufferedReader(fileReader);
+	            String line="";
+	            while((line = bufferedReader.readLine()) != null) {
+	            	if(line.contains("\t"))
+	            	{
+	            		int count=0;
+	            		for(int i=0;i<line.length();i++)
+	            		{
+	            			if(line.charAt(i)=='\t')
+	            				count++;
+	            			else
+	            				break;
+	            		}
+	            		if(count == names.size())
+	            		{
+	            			String s= line.trim();
+	            			names.add(s);
+	            			if(s.endsWith(".jpeg") || s.endsWith(".png") || s.endsWith(".gif"))
+	            			{
+	            				int size = getPathSize(names);
+	            				if(size>max)
+	            				{
+	            					max=size;
+	            				}
+	            				names.remove(names.size()-1);
+	            			}
+	            			
+	            		}
+	            		else if(count < names.size())
+	            		{
+	            			while(names.size()!=count)
+	            			{
+	            				names.remove(count);
+	            			}
+	            			String s= line.trim();
+	            			names.add(s);
+	            			if(s.endsWith(".jpeg") || s.endsWith(".png") || s.endsWith(".gif"))
+	            			{
+	            				int size = getPathSize(names);
+	            				if(size>max)
+	            				{
+	            					max=size;
+	            				}
+	            				names.remove(names.size()-1);
+	            			}
+	            		}
+	            		else
+	            		{
+	            			System.out.println("Wrong format");
+	            		}
+	            	}
+	            	else
+	            	{
+	            		names = new ArrayList();
+	            		names.add(line);
+            			if(line.endsWith(".jpg"))
+            			{
+            				int size = getPathSize(names);
+            				if(size>max)
+            				{
+            					max=size;
+            				}
+            				names.remove(names.size()-1);
+            			}
+	            	}
+	                
+	            }   
+	            bufferedReader.close();         
+	        }
+	        catch(Exception ex) 
+		 	{
+	                      
+	        }
+		 System.out.println("Max directory path size is :"+ max);
+	}
+
+	
+	public static int getPathSize(ArrayList names)
+	{
+		String s="/";
+		for(int i=0;i<names.size();i++)
+		{
+			s+= names.get(i);
+			if(i< names.size()-1)
+			{
+				s+="/";
+			}
+		}
+		System.out.println(s+"  "+s.length());
+		return s.length();
+	}
+}

@@ -1,0 +1,17 @@
+home
+ dir1
+ dir2
+  dir21
+   img1.jpg
+   img2.jpg
+  dir22
+   img3.jpg
+  dir23
+ dir3
+  img4.jpg
+  dir31
+   dir311
+    dir3111
+     img5.jpg
+    dir3112
+    img6.jpg
